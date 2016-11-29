@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<!-- Paragraphs for the accelerometer and magnetometer values. -->
+
+<br />
+
+<p id="x_acc">No accelerometer found.</p>
+<p id="y_acc"></p>
+<p id="z_acc"></p>
+
+<br />
+
+<p id="mag_alpha">No magnetometer found.</p>
+<p id="mag_beta"></p>
+<p id="mag_gamma"></p>
+
+
+
+<script>
+
+window.ondevicemotion = function(event) { 
+	var ax = event.accelerationIncludingGravity.x
+	var ay = event.accelerationIncludingGravity.y
+	var az = event.accelerationIncludingGravity.z
+
+	document.querySelector("#x_acc").innerHTML = "X = " + ax;
+	document.querySelector("#y_acc").innerHTML = "Y = " + ay;
+	document.querySelector("#z_acc").innerHTML = "Z = " + az;
+}
+
+window.addEventListener("deviceorientation", function(event) {
+	document.querySelector("#mag_alpha").innerHTML = "alpha = " + event.alpha;
+	document.querySelector("#mag_beta").innerHTML = "beta = " + event.beta;
+	document.querySelector("#mag_gamma").innerHTML = "gamma = " + event.gamma;
+}, true);
+
+</script>
+
+</body>
+</html>
