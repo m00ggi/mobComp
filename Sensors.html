@@ -21,9 +21,13 @@
 <script>
 
 window.ondevicemotion = function(event) { 
-	var ax = event.accelerationIncludingGravity.x
-	var ay = event.accelerationIncludingGravity.y
-	var az = event.accelerationIncludingGravity.z
+	//var ax = event.accelerationIncludingGravity.x
+	//var ay = event.accelerationIncludingGravity.y
+	//var az = event.accelerationIncludingGravity.z
+	
+	var ax = event.rotationRate.alpha;
+	var ay = event.rotationRate.beta;
+	var az = event.rotationRate.gamma;
 
 	document.querySelector("#x_acc").innerHTML = "X = " + ax;
 	document.querySelector("#y_acc").innerHTML = "Y = " + ay;
