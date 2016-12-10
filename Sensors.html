@@ -12,33 +12,45 @@
 
 <br />
 
-<p id="mag_alpha">No magnetometer found.</p>
+<!--<p id="mag_alpha">No magnetometer found.</p>
 <p id="mag_beta"></p>
-<p id="mag_gamma"></p>
+<p id="mag_gamma"></p> -->
 
 
 
 <script>
 
-window.ondevicemotion = function(event) { 
+window.addEventListener("deviceorientation",  lagebestimmung, false);
+
+function lagebestimmung(ereignis) {
+	var winkel_alpha = Math.round(ereignis.alpha);
+	var winkel_beta = Math.round(ereignis.beta);
+	var winkel_gamma = Math.round(ereignis.gamma);
+	document.querySelector("#x_acc").innerHTML = "Winkel_alpha = " + winkel_alpha;
+	document.querySelector("#y_acc").innerHTML = "Winkel_beta = " + winkel_beta;
+	document.querySelector("#z_acc").innerHTML = "Winkel_gamma = " + winkel_gamma;
+  //document.getElementById("logo").style.webkitTransform = "rotate(" + winkel_gamma + "deg) rotate3d(1, 0, 0, " + winkel_beta + "deg)";
+}
+
+//window.ondevicemotion = function(event) { 
 	//var ax = event.accelerationIncludingGravity.x
 	//var ay = event.accelerationIncludingGravity.y
 	//var az = event.accelerationIncludingGravity.z
 	
-	var ax = event.rotationRate.alpha;
-	var ay = event.rotationRate.beta;
-	var az = event.rotationRate.gamma;
+	//var ax = event.rotationRate.alpha;
+	//var ay = event.rotationRate.beta;
+	//var az = event.rotationRate.gamma;
 
-	document.querySelector("#x_acc").innerHTML = "X = " + ax;
-	document.querySelector("#y_acc").innerHTML = "Y = " + ay;
-	document.querySelector("#z_acc").innerHTML = "Z = " + az;
-}
+	//document.querySelector("#x_acc").innerHTML = "X = " + ax;
+	//document.querySelector("#y_acc").innerHTML = "Y = " + ay;
+	//document.querySelector("#z_acc").innerHTML = "Z = " + az;
+//}
 
-window.addEventListener("deviceorientation", function(event) {
-	document.querySelector("#mag_alpha").innerHTML = "alpha = " + event.alpha;
-	document.querySelector("#mag_beta").innerHTML = "beta = " + event.beta;
-	document.querySelector("#mag_gamma").innerHTML = "gamma = " + event.gamma;
-}, true);
+//window.addEventListener("deviceorientation", function(event) {
+	//document.querySelector("#mag_alpha").innerHTML = "alpha = " + event.alpha;
+	//document.querySelector("#mag_beta").innerHTML = "beta = " + event.beta;
+	//document.querySelector("#mag_gamma").innerHTML = "gamma = " + event.gamma;
+//}, true);
 
 </script>
 
