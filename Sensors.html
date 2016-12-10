@@ -23,6 +23,12 @@
 window.addEventListener("deviceorientation",  lagebestimmung, false);
 
 function lagebestimmung(ereignis) {
+
+	var img = new Image();
+	img.src = "teco.jpg";
+	half_width = img.naturalWidth / 2;
+	half_height = img.naturalHeight / 2;
+
 	var winkel_alpha = Math.round(ereignis.alpha);
 	var winkel_beta = Math.round(ereignis.beta);
 	var winkel_gamma = Math.round(ereignis.gamma);
